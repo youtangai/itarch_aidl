@@ -5,7 +5,12 @@ import android.content.Intent
 import android.os.IBinder
 
 class SpellService : Service() {
-    private val mBinder = MyAidl()
+
+    private val mBinder = object: IMyAidlInterface.Stub() {
+        override fun spellMagic(magic: String?) {
+            print(magic)
+        }
+    }
 
     override fun onCreate() {
         super.onCreate()
