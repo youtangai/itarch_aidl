@@ -25,8 +25,16 @@ class SpellService : Service() {
                 return "サンダガ"
             } else if (magic == "ブリザド"){
                 return "ブリザガ"
+            } else if (magic == "ウォータ"){
+                return "ウォタガ"
+            } else if (magic == "ヘイスト"){
+                return "ヘイスガ"
+            } else if (magic == "スロウ"){
+                return "スロウガ"
             }
-            return "メテオ"
+            return """FFの初級魔法を入力してください
+                |例)ケアル，ファイア，サンダー，ブリザド
+                |""".trimMargin()
         }
     }
 }
