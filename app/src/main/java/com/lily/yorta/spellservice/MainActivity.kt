@@ -32,11 +32,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val button = findViewById(R.id.button) as Button
+        val plainText = findViewById(R.id.editText) as EditText
+
         val intent = Intent(this@MainActivity, SpellService::class.java)
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE)
 
-        val button = findViewById(R.id.button) as Button
-        val plainText = findViewById(R.id.text) as EditText
+
 
         button.setOnClickListener{
             val str = plainText.text.toString()
