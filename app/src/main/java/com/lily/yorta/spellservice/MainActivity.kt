@@ -8,6 +8,9 @@ import android.os.Bundle
 import android.os.IBinder
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     val TAG = "yorta.lily.MAIN"
@@ -17,8 +20,6 @@ class MainActivity : AppCompatActivity() {
 
         override fun onServiceConnected(className: ComponentName?, service: IBinder?){
             mIMyAidlInterface = IMyAidlInterface.Stub.asInterface(service)
-            val spell = mIMyAidlInterface?.spellMagic("hogehoge")
-            Log.d(TAG, spell)
         }
 
         override fun onServiceDisconnected(className: ComponentName?) {
@@ -33,6 +34,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val intent = Intent(this@MainActivity, SpellService::class.java)
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE)
+
+        val button = findViewById(R.id.button) as Button
+        val plainText = findViewById(R.id.text) as EditText
+
+        button.setOnClickListener{
+            val str = plainText.text.toString()
+            val spell = mIMyAidlInterface?.spellMagic(str)
+            val disp = str + " convert to " + spell
+            Log.d(TAG, spell)
+            Toast.makeText(this, disp, Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     override fun onPause() {
