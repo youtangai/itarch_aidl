@@ -31,10 +31,20 @@ class SpellService : Service() {
                 return "ヘイスガ"
             } else if (magic == "スロウ"){
                 return "スロウガ"
+            } else if (magic == "プロテス"){
+                return "プロテガ"
+            } else if (magic == "シェル"){
+                return "シェルガ"
+            } else if (magic == "エアロ"){
+                return "エアロガ"
+            } else if (magic == "バイオ"){
+                return "バイオガ"
+            } else if (magic == "クエイク"){
+                return "クエイガ"
+            } else if (magic == "グラビデ") {
+                return "グラビガ"
             }
-            return """FFの初級魔法を入力してください
-                |例)ケアル，ファイア，サンダー，ブリザド
-                |""".trimMargin()
+            return "その魔法は未対応です"
         }
     }
 }
